@@ -6,12 +6,23 @@
 
 把 `chat.qwen.ai` 变成你自己的 OpenAI API —— 多账户轮询 · 流式 SSE · 工具调用 · 上下文外置 · 中文仪表盘
 
+[![QQ 群](https://img.shields.io/badge/QQ群-905971993-eb1923?logo=tencentqq&logoColor=white)](https://qm.qq.com/cgi-bin/qm/qr?k=QwenHub群905971993)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Bun](https://img.shields.io/badge/Bun-1.3+-pink.svg)](https://bun.sh)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue)](https://www.typescriptlang.org/)
 
 </div>
 
+
+<div align="center">
+
+### 💬 技术交流群
+
+**QQ 群号：905971993**
+
+<img src="https://img.shields.io/badge/扫一扫-加入群聊-12B7F5?style=for-the-badge&logo=tencentqq&logoColor=white" alt="加入QQ群">
+
+</div>
 > **免责声明**：本项目仅供学习与研究。它通过 `chat.qwen.ai` 提供模型访问，与阿里巴巴/通义千问官方无关。使用者须遵守 `chat.qwen.ai` 服务条款。
 
 ---
@@ -214,3 +225,11 @@ src/
 ## License
 
 MIT
+
+## 交流
+
+- 💬 **QQ 技术交流群**：`905971993`（扫顶部二维码加入）
+
+## 致谢
+
+本项目在开源社区实践基础上改进而来（upstream: qwen-gate, MIT）。
