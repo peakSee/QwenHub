@@ -92,6 +92,12 @@ ${navLinks}
     <div class="sidebar-footer" style="display:flex;flex-direction:column;gap:6px">
       ${dmToggle}
       <span class="live-indicator"><span class="live-dot"></span>Live</span>
+      <a href="https://qm.qq.com/cgi-bin/qm/qr?k=QwenHub905971993" target="_blank" rel="noopener"
+         style="display:flex;align-items:center;gap:6px;font-size:0.72rem;color:var(--text-secondary);text-decoration:none;padding:4px 6px;border-radius:6px;background:var(--bg-elevated)"
+         title="加入 QQ 技术交流群 905971993">
+        <span style="color:#12B7F5">💬</span>
+        <span>QQ 群 <b style="color:var(--text-primary)">905971993</b></span>
+      </a>
     </div>
   </aside>`;
 }
