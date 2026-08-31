@@ -20,7 +20,11 @@
 
 **QQ 群号：905971993**
 
-<img src="https://img.shields.io/badge/扫一扫-加入群聊-12B7F5?style=for-the-badge&logo=tencentqq&logoColor=white" alt="加入QQ群">
+<br>
+
+<img src="media/qq-group.png" alt="QQ 技术交流群二维码 905971993" width="360">
+
+*扫一扫二维码，加入群聊*
 
 </div>
 > **免责声明**：本项目仅供学习与研究。它通过 `chat.qwen.ai` 提供模型访问，与阿里巴巴/通义千问官方无关。使用者须遵守 `chat.qwen.ai` 服务条款。
