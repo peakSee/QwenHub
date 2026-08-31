@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "project": ["src/**/*.ts", "src/**/*.tsx"],
+  "ignoreDependencies": [],
+  "ignore": [],
+  "rules": {
+    "bin": "warn",
+    "files": "warn"
+  }
+}

@@ -1,0 +1,102 @@
+# Dependencies and build
+node_modules/
+dist/
+package-lock.json
+
+# Environment files
+config.json
+config.local.json
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+.logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing and coverage
+coverage/
+.husky/_/
+.cache/
+playwright-report/
+
+# IDE and editor
+
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.kilo
+
+
+# Runtime and browser automation
+.qwen/
+browser-profile/
+cookies/
+sessions/
+
+# Agent and AI tool workspaces
+
+
+
+.claude/
+
+
+
+
+
+
+
+
+
+
+# Sensitive session data
+scripts/discovery-output*.json
+
+# Analysis and documentation tools
+graphify-out/
+output-bugs/
+
+
+
+# Screenshots and media
+pics/
+
+# Trash
+.trash/
+
+# Backup and temporary files
+.backup/
+.backup
+*.bak
+*.tmp
+TODO.md
+
+# 
+
+
+# Project docs
+TODO/
+qwen-gate/
+github_reply
+toolcall_study
+extract output qwen/
+research
+token-usage-output.txt
+.auth/
+.cortexkit/
+test-*.ts
+
+# Debug scripts and build cache
+_t.js
+signup-cloak*.js
+signup-cloak*.mjs
+tsconfig.tsbuildinfo

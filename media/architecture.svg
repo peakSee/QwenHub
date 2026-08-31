@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 340" width="100%">
+  <defs>
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F1EA"/>
+      <stop offset="100%" stop-color="#EBE5D9"/>
+    </linearGradient>
+    <linearGradient id="archCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9E2D6"/>
+      <stop offset="100%" stop-color="#DDD4C6"/>
+    </linearGradient>
+    <linearGradient id="gateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DDD4C6"/>
+      <stop offset="100%" stop-color="#C9BFAE"/>
+    </linearGradient>
+    <filter id="archShadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="4" flood-color="#C9BFAE" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrowRight" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0 0 L 8 3 L 0 6" fill="#5E9D5C" opacity="0.6"/>
+    </marker>
+    <marker id="arrowLeft" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <path d="M 0 0 L 8 3 L 0 6" fill="#C8983A" opacity="0.6"/>
+    </marker>
+  </defs>
+  <rect width="880" height="340" fill="url(#archBg)" rx="16" stroke="#C9BFAE" stroke-width="1"/>
+  <rect x="2" y="2" width="876" height="336" rx="15" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.4"/>
+  <text x="440" y="30" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#8a7f6f" letter-spacing="2" font-weight="600">ARCHITECTURE</text>
+  <rect x="30" y="110" width="140" height="100" rx="10" fill="url(#archCard)" stroke="#C9BFAE" stroke-width="1" filter="url(#archShadow)"/>
+  <text x="100" y="145" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#1a1615" font-weight="700">Your App</text>
+  <text x="100" y="165" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a7f6f">OpenAI SDK</text>
+  <text x="100" y="180" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a7f6f">curl / fetch</text>
+  <text x="100" y="195" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a7f6f">any HTTP client</text>
+  <line x1="170" y1="140" x2="270" y2="140" stroke="#5E9D5C" stroke-width="1.5" opacity="0.5" marker-end="url(#arrowRight)" stroke-dasharray="4 3"/>
+  <text x="220" y="133" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#5E9D5C" opacity="0.8">POST /v1/chat</text>
+  <line x1="270" y1="185" x2="170" y2="185" stroke="#C8983A" stroke-width="1.5" opacity="0.5" marker-end="url(#arrowLeft)" stroke-dasharray="4 3"/>
+  <text x="220" y="200" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#C8983A" opacity="0.8">SSE Stream</text>
+  <rect x="270" y="55" width="320" height="230" rx="12" fill="url(#gateGrad)" stroke="#5E9D5C" stroke-width="1.5" filter="url(#archShadow)"/>
+  <text x="430" y="80" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16" fill="#1a1615" font-weight="700" letter-spacing="-0.5">QwenHub</text>
+  <line x1="300" y1="90" x2="560" y2="90" stroke="#C9BFAE" stroke-width="0.5"/>
+  <rect x="290" y="102" width="130" height="36" rx="8" fill="#F5F1EA" stroke="#C9BFAE" stroke-width="0.5"/>
+  <text x="355" y="125" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#1a1615" font-weight="500">Hono Router</text>
+  <rect x="440" y="102" width="130" height="36" rx="8" fill="#F5F1EA" stroke="#C9BFAE" stroke-width="0.5"/>
+  <text x="505" y="125" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#1a1615" font-weight="500">Bearer Auth</text>
+  <rect x="290" y="148" width="130" height="36" rx="8" fill="#F5F1EA" stroke="#C9BFAE" stroke-width="0.5"/>
+  <text x="355" y="171" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#1a1615" font-weight="500">Session Pool</text>
+  <rect x="440" y="148" width="130" height="36" rx="8" fill="#F5F1EA" stroke="#C9BFAE" stroke-width="0.5"/>
+  <text x="505" y="171" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#1a1615" font-weight="500">Rate Limiter</text>
+  <rect x="290" y="194" width="130" height="36" rx="8" fill="#F5F1EA" stroke="#C9BFAE" stroke-width="0.5"/>
+  <text x="355" y="217" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#1a1615" font-weight="500">Playwright</text>
+  <rect x="440" y="194" width="130" height="36" rx="8" fill="#F5F1EA" stroke="#C9BFAE" stroke-width="0.5"/>
+  <text x="505" y="217" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#1a1615" font-weight="500">Content Filter</text>
+  <rect x="290" y="240" width="280" height="32" rx="8" fill="#F5F1EA" stroke="#C9BFAE" stroke-width="0.5"/>
+  <text x="430" y="261" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#8a7f6f" font-weight="500">Tool Registry + JSON Schema Validator</text>
+  <line x1="590" y1="140" x2="700" y2="140" stroke="#5E9D5C" stroke-width="1.5" opacity="0.5" marker-end="url(#arrowRight)" stroke-dasharray="4 3"/>
+  <text x="645" y="133" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#5E9D5C" opacity="0.8">Internal API</text>
+  <line x1="700" y1="185" x2="590" y2="185" stroke="#C8983A" stroke-width="1.5" opacity="0.5" marker-end="url(#arrowLeft)" stroke-dasharray="4 3"/>
+  <text x="645" y="200" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#C8983A" opacity="0.8">SSE Chunks</text>
+  <rect x="700" y="110" width="150" height="100" rx="10" fill="url(#archCard)" stroke="#C9BFAE" stroke-width="1" filter="url(#archShadow)"/>
+  <text x="775" y="145" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#1a1615" font-weight="700">chat.qwen.ai</text>
+  <text x="775" y="165" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a7f6f">Qwen Models</text>
+  <text x="775" y="180" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a7f6f">Web Interface</text>
+  <text x="775" y="195" text-anchor="middle" font-family="ui-sans-serif, sans-serif" font-size="10" fill="#8a7f6f">(Browser Session)</text>
+  <line x1="310" y1="315" x2="340" y2="315" stroke="#5E9D5C" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 3"/>
+  <text x="345" y="319" font-family="ui-sans-serif, sans-serif" font-size="9" fill="#8a7f6f">Request</text>
+  <line x1="400" y1="315" x2="430" y2="315" stroke="#C8983A" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 3"/>
+  <text x="435" y="319" font-family="ui-sans-serif, sans-serif" font-size="9" fill="#8a7f6f">Response</text>
+</svg>

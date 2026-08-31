@@ -1,0 +1,102 @@
+/* Usage page */
+table#usageTable,
+table#modelTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+table#usageTable th,
+table#usageTable td,
+table#modelTable th,
+table#modelTable td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.78rem;
+  vertical-align: middle;
+}
+table#usageTable th,
+table#modelTable th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+table#usageTable td.num,
+table#modelTable td.num {
+  text-align: right;
+  font-family: var(--mono);
+}
+table#usageTable tr:last-child td,
+table#modelTable tr:last-child td {
+  border-bottom: none;
+}
+.acct-email {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.acct-sub {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+}
+.model-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 560px;
+}
+.model-chip {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  white-space: nowrap;
+}
+.model-chip b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.model-chip.walled {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.model-chip.walled b {
+  color: var(--danger);
+}
+.chip-warn {
+  color: var(--danger);
+  margin-left: 2px;
+}
+.wall-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border);
+  width: 100%;
+}
+.wall-badge {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  white-space: nowrap;
+  cursor: help;
+}
+.empty-state {
+  padding: 28px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}

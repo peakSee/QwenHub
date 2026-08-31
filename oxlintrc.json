@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "correctness": {
+      "noUnusedVariables": "error"
+    },
+    "style": {
+      "noNonNullAssertion": "warn"
+    }
+  },
+  "ignorePatterns": ["node_modules/**", "dist/**", ".logs/**", "research/**", ".opencode/**", "scripts/*.py"]
+}

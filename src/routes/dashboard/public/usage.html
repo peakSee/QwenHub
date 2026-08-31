@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QwenHub — 用量统计</title>
+<link rel="stylesheet" href="/dashboard/static/shared.css">
+<link rel="stylesheet" href="/dashboard/static/overview.css">
+<link rel="stylesheet" href="/dashboard/static/usage.css">
+</head>
+<body>
+<div class="dashboard-layout">
+<!--SIDEBAR-->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>用量统计</h1>
+      <div class="page-header-right">
+        <span class="uptime-text">按账户 × 模型统计请求数，滚动 14 天</span>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="kpi-grid" id="kpiGrid">
+      <div class="kpi-card"><span class="kpi-label">今日请求</span><span class="kpi-value" id="kpiToday">—</span><span class="kpi-sub" id="kpiTodaySub"></span></div>
+      <div class="kpi-card"><span class="kpi-label">近 7 天</span><span class="kpi-value" id="kpiWeek">—</span><span class="kpi-sub" id="kpiWeekSub"></span></div>
+      <div class="kpi-card"><span class="kpi-label">活跃账户</span><span class="kpi-value" id="kpiAccounts">—</span><span class="kpi-sub" id="kpiAccountsSub"></span></div>
+      <div class="kpi-card"><span class="kpi-label">限流次数</span><span class="kpi-value" id="kpiWalls">—</span><span class="kpi-sub" id="kpiWallsSub"></span></div>
+    </div>
+
+    <!-- Per-account table -->
+    <div class="panel">
+      <div class="panel-header open" onclick="togglePanel(this)"><span class="panel-title">账户明细</span><span class="panel-chevron">▼</span></div>
+      <div class="panel-body open">
+        <div class="panel-content">
+          <div class="tbl-wrap">
+            <table id="usageTable">
+              <thead>
+                <tr>
+                  <th>账户</th>
+                  <th class="num">今天</th>
+                  <th class="num">昨天</th>
+                  <th class="num">7 天</th>
+                  <th>按模型</th>
+                </tr>
+              </thead>
+              <tbody id="usageBody"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="emptyState" style="display:none">暂无用量记录 —— 发几条请求后这里会自动填充。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Per-model totals -->
+    <div class="panel">
+      <div class="panel-header open" onclick="togglePanel(this)"><span class="panel-title">模型汇总（7 天）</span><span class="panel-chevron">▼</span></div>
+      <div class="panel-body open">
+        <div class="panel-content">
+          <div class="tbl-wrap">
+            <table id="modelTable">
+              <thead>
+                <tr>
+                  <th>模型</th>
+                  <th class="num">请求数</th>
+                  <th class="num">限流次数</th>
+                  <th>最近等待</th>
+                  <th class="num">估算日额度</th>
+                </tr>
+              </thead>
+              <tbody id="modelBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/dashboard/static/shared.js"></script>
+<script src="/dashboard/static/usage.js"></script>
+</body>
+</html>

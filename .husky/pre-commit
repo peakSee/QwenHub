@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Quality pipeline — fail fast on first error
+bunx biome format --write src/ || exit 1
+bunx oxlint --fix-suggestions --format agent src/ || exit 1
+bun run tsc --noEmit || exit 1
+bun test || exit 1

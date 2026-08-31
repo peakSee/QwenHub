@@ -1,0 +1,13 @@
+node_modules
+dist
+.qwen
+.env
+*.log
+.git
+.gitignore
+thoughts
+media
+docs
+*.md
+!package.json
+!bun.lock

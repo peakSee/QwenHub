@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# qg — QwenHub CLI
+set -uo pipefail
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ "$SOURCE" != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# ── Helper ───────────────────────────────────────────────────────────
+has_cmd() { command -v "$1" &>/dev/null; }
+
+# ── Ensure dependencies are installed ────────────────────────────────
+if has_cmd bun; then
+  (cd "$PROJECT_ROOT" && bun install) </dev/null || {
+    echo "[qg] bun install failed — falling back to npm..." >&2
+    (cd "$PROJECT_ROOT" && npm install --ignore-scripts) </dev/null || {
+      echo "[qg] npm install also failed. Run 'npm install' manually in $PROJECT_ROOT" >&2
+      exit 1
+    }
+  }
+else
+  (cd "$PROJECT_ROOT" && npm install --ignore-scripts) </dev/null || {
+    echo "[qg] npm install failed. Install Bun (https://bun.sh) or run 'npm install' manually in $PROJECT_ROOT" >&2
+    exit 1
+  }
+fi
+
+# ── Run CLI ──────────────────────────────────────────────────────────
+
+# Priority: bun > npx tsx > node dist
+if has_cmd bun; then
+  exec bun "$PROJECT_ROOT/src/cli.ts" "$@"
+elif has_cmd npx; then
+  exec npx tsx "$PROJECT_ROOT/src/cli.ts" "$@"
+elif [ -f "$PROJECT_ROOT/dist/index.js" ]; then
+  exec node "$PROJECT_ROOT/dist/index.js" "$@"
+else
+  echo "[qg] Error: No runtime found. Install Bun (https://bun.sh) or Node.js" >&2
+  exit 1
+fi
