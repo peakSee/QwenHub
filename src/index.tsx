@@ -293,8 +293,8 @@ if (import.meta.main) {
 
   \x1b[0m\x1b[32m●\x1b[0m Host: ${host}
   \x1b[32m●\x1b[0m Port: ${port}
-  \x1b[32m●\x1b[0m API: ${host}:${port}/v1
-  \x1b[32m●\x1b[0m Dashboard: http://${host}:${port}/dashboard (Ctrl+Click)\x1b[0m
+  \x1b[32m●\x1b[0m API: http://localhost:${port}/v1
+  \x1b[32m●\x1b[0m Dashboard: http://localhost:${port}/dashboard (Ctrl+Click)\x1b[0m
   `);
 
   async function startServer() {
