@@ -5,7 +5,8 @@
  */
 
 import { type ChildProcess, execFileSync, spawn } from 'child_process';
-import { existsSync, rmSync } from 'fs';
+import { existsSync, readdirSync, rmSync } from 'fs';
+import { join } from 'path';
 import WebSocket from 'ws';
 import { getProfileDir } from './browserProfiles.ts';
 import { logStore } from './logStore.ts';
@@ -29,6 +30,45 @@ const sessions = new Map<string, ScreencastSession>();
 let _cachedChromeBin: string | null = null;
 function findChromeBinary(): string {
   if (_cachedChromeBin) return _cachedChromeBin;
+  const isWin = process.platform === 'win32';
+
+  // ── Windows: locate a real Chrome/Chromium binary ──
+  if (isWin) {
+    const winCandidates: string[] = [];
+    // 1. Env override
+    if (process.env.QWENHUB_CHROME_PATH) winCandidates.push(process.env.QWENHUB_CHROME_PATH);
+    // 2. CloakBrowser stealth chromium (bundled cache)
+    const cloak = join(process.env.USERPROFILE || '', '.cloakbrowser', 'chromium-146.0.7680.177.5', 'chrome.exe');
+    winCandidates.push(cloak);
+    // 3. Playwright cached chromium builds
+    const pwRoot = join(process.env.LOCALAPPDATA || '', 'ms-playwright');
+    try {
+      for (const d of readdirSync(pwRoot)) {
+        if (/^chromium-\d+$/.test(d)) {
+          winCandidates.push(join(pwRoot, d, 'chrome-win64', 'chrome.exe'));
+          winCandidates.push(join(pwRoot, d, 'chrome-win', 'chrome.exe'));
+        }
+      }
+    } catch {}
+    // 4. System Chrome
+    winCandidates.push(join(process.env['ProgramFiles'] || 'C:\\Program Files', 'Google', 'Chrome', 'Application', 'chrome.exe'));
+    winCandidates.push(join(process.env['ProgramFiles(x86)'] || 'C:\\Program Files (x86)', 'Google', 'Chrome', 'Application', 'chrome.exe'));
+    winCandidates.push(join(process.env.LOCALAPPDATA || '', 'Google', 'Chrome', 'Application', 'chrome.exe'));
+
+    for (const bin of winCandidates) {
+      try {
+        if (!existsSync(bin)) continue;
+        execFileSync(bin, ['--version'], { stdio: 'ignore', timeout: 15000 });
+        _cachedChromeBin = bin;
+        logStore.log('info', 'screencast', `Chrome binary found: ${bin}`);
+        return bin;
+      } catch {}
+    }
+    logStore.log('error', 'screencast', 'No Chrome/Chromium binary found on Windows — set QWENHUB_CHROME_PATH');
+    return 'chrome';
+  }
+
+  // ── Linux/macOS: original candidates ──
   const home = process.env.HOME || '/home/youssefsrv';
   const candidates = [
     `${home}/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome`,
@@ -346,7 +386,25 @@ async function connectCDP(session: ScreencastSession, wsUrl: string): Promise<vo
         if (url && !url.startsWith('about:') && url.includes('chat.qwen.ai') && !url.includes('/auth')) {
           logStore.log('info', 'screencast', `Login complete for ${session.email} — navigated to ${url}`);
           broadcastToClients(session, JSON.stringify({ type: 'login_complete' }));
-          setTimeout(() => cleanupSession(session.email), 2000);
+          // ★ Grab the token cookie NOW before cleanup — the 2s polling
+          //   (startLoginPolling) gets cancelled before it can run.
+          (async () => {
+            try {
+              const result = await cdpSend(session, 'Network.getCookies', { urls: ['https://chat.qwen.ai'] });
+              const tokenCookie = result?.cookies?.find((c: any) => c.name === 'token');
+              if (tokenCookie?.value) {
+                const { saveCookies } = await import('./auth.ts');
+                const refreshCookie = result.cookies.find((c: any) => c.name.toLowerCase().includes('refresh'));
+                await saveCookies(session.email, tokenCookie.value, refreshCookie?.value);
+                logStore.log('info', 'screencast', `Token captured on navigation for ${session.email}`);
+              } else {
+                logStore.log('warn', 'screencast', `No token cookie yet for ${session.email} — polling continues`);
+              }
+            } catch (err: any) {
+              logStore.log('warn', 'screencast', `Cookie grab failed for ${session.email}: ${err.message}`);
+            }
+          })();
+          setTimeout(() => cleanupSession(session.email), 8000);
         }
       }
     });
